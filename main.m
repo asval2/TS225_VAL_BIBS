@@ -27,3 +27,5 @@ for i = 1:length(L1)
 end
 
 [X Y] = meshgrid(1:h,1:w);
+
+
