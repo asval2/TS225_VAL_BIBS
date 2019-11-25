@@ -13,7 +13,7 @@ L2 = ginput(4);
 
 H = homo(L1, L2);
 H = [H; 1];
-H = reshape(X,3,3);
+H = reshape(H,3,3);
 L1_ = [];
 L2_ = [];
 s = 1;
