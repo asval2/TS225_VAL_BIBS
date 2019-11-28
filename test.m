@@ -12,7 +12,7 @@ B = imread('./images/barbara.bmp');
 figure,imshow(B);
 L2 =[ h_/2 h_ w_ w_/2];
 
-H = homo(L1, L2);
+H = homo(L1, L2); %homographie qui lie les quadrangles M et M'
 H = [H; 1];
 H = reshape(H,3,3);
 L1_ = [];
@@ -25,7 +25,7 @@ C=[];
 C=A;
 for i=1:h
     for j=1:w
-        if (ismember(i,born1)&ismember(j,born2))
+        if ( (ismember(i,born1)) && (ismember(j,born2)) )
             
         end
         
