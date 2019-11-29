@@ -18,11 +18,11 @@ for i=1:n
     y1 = L1(i,2);
     x2 = L2(i,1);
     y2 = L2(i,2);
-    A= [A; x1 x2 1 0 0 0 -x1*x2 -y1*x2];
+    A= [A; x1 y1 1 0 0 0 -x1*x2 -y1*x2 ];
     A= [A; 0 0 0 x1 y1 1 -x1*y2 -y1*y2 ];
 end
-X = A\B;
 
+X = A\B;
 
 
 end
