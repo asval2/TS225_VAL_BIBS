@@ -1,4 +1,4 @@
-function [X] = homo(L1,L2)
+function [H] = homo(L1,L2)
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -22,7 +22,10 @@ for i=1:n
     A= [A; 0 0 0 x1 y1 1 -x1*y2 -y1*y2 ];
 end
 
-X = A\B;
+H = A\B;
+H = [H ; 1];
+H = reshape(H',3,3);
+H = H';
 
 
 end
