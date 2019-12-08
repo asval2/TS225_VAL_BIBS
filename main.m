@@ -3,7 +3,7 @@ close all;
 clc;
 
 
-% %% Extraction de 1 vers 2
+%% Extraction de 1 vers 2
 % A = double(imread('./images/barbara.bmp'));
 % [h, w] = size(A);
 % figure,image(A),colormap(gray(256));
@@ -19,28 +19,56 @@ clc;
 % J=extraction(A, H, size(C));
 % figure,image(J),colormap(gray(256));
 % 
-% %% Projection de 2 vers 1
-% A = double(imread('./images/barbara.bmp'));
-% [h, w] = size(A);
-% figure,image(A),colormap(gray(256));
+%% Projection de 2 vers 1
+A = imread('./images/foreground.jpg');
+[h, w, ~] = size(A);
+figure,imshow(A);
+L1 = ginput(4);
+close;
+B = imread('./images/background.jpg');
+[h_, w_, ~] = size(B);
+L2=[ 1 1 ;w_ 1 ;w_ h_;1 h_];
+
+% A = imread('./images/barbara.bmp');
+% [h, w, ~] = size(A);
+% figure,imshow(A);
 % L1 = ginput(4);
-% 
-% B = double(imread('./images/lena.bmp'));
-% [h_, w_] = size(B);
+% close;
+% B = imread('./images/lena.bmp');
+% [h_, w_, ~] = size(B);
 % L2=[ 1 1 ;w_ 1 ;w_ h_;1 h_];
+
+H = homo(L1, L2); %H12
+
+% Jw= w;
+% Jh = h;
+% J=A;
+% for i= 1:Jh
+%     for j= 1:Jw
+%         M2 = [j; i; 1];
+%         M1 = H*M2;
+%         a = floor(M1(1)/M1(3));
+%         b = floor(M1(2)/M1(3));
+%         if (a>0&&a<=w_&&b>0&&b<=h_)
+%             J(i,j)=B(b,a);
+%         
+%         end
+%     end
+% end
+
+J = projection(B,A,H);
 % 
-% H = homo(L1, L2); %H12
-% 
+
 % J=extraction(B, H, size(A));
-% figure,image(J),colormap(gray(256));
+figure,imshow(J);%,colormap(gray(256));
 % mask = J==0;
 % D = A.*mask + J;
 % figure,image(D),colormap(gray(256));
 
 %% Mosaique
-I = double(imread('./images/barbara.bmp'));
-
-MIB1 = mib_create(I);
+% I = double(imread('./images/barbara.bmp'));
+% 
+% MIB1 = mib_create(I);
 
 
 
