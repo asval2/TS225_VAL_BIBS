@@ -35,22 +35,22 @@ s2 = B_(2,:)-B_(1,:)+1;
 n = s2(2)
 m = s2(1)
 Mask=zeros(n,m);
-I2=ones(n,m);
+I2=zeros(n,m);
 invH=inv(H);
 for i= B_(1,2):B_(2,2)
     for j=B_(1,1):B_(2,1)
 
 %         i
 %         j
-        M_2 = invH*homogene([i;j],1);
+        M_2 = invH*homogene([j;i],1);
         M2= floor(M_2(1:2)/M_2(3));
         x = M2(1);
         y = M2(2);
         
-        if (x>=B1(2) && x<=B2(2) && y>=B1(1) && y<=B2(1))
+        if (x>=B1(2) && x<=B2(1) && y>=B1(2) && y<=B2(2))
 %             i-B_(1,2)+1
 %             j-B_(1,1)+1
-            I2(i-B_(1,2)+1,j-B_(1,1)+1) = I1(x,y);
+            I2(i-B_(1,2)+1,j-B_(1,1)+1) = I1(y,x);
             Mask(i-B_(1,2)+1,j-B_(1,1)+1) = 1;
         end
         
