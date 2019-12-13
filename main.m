@@ -67,19 +67,24 @@ clc;
 
 %% Mosaique
 I = double(imread('./images/barbara.bmp'));
-% [h w] = size(I);
+[h w] = size(I);
+figure,imshow(uint8(I));
+L1 = ginput(4);
+L2=[ 1 1 ;w 1 ;w h;1 h];
 % figure,imshow(uint8(I));
-% L1 = ginput(4);
-% L2=[ 1 1 ;w 1 ;w h;1 h];
-
+% L2 = ginput(4);
 
 MIB1 = mib_create(I);
-theta =pi/2;
+theta =pi/3;
 H = [cos(theta) -sin(theta) 0;
     sin(theta) cos(theta) 0;
     0 0 1];
-% H = homo(L2, L1);
+H = homo(L2, L1);
 MIB2 = mib_apply_homography(MIB1,H);
 figure,imshow(uint8(MIB2.I));
+% 
 
+MIB3 = mib_fusion(MIB1,MIB2);
+figure,imshow(uint8(MIB3.I));
 
+%% 

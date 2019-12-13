@@ -22,18 +22,18 @@ L_2=H*homogene(B2,1);
 L_3=H*homogene(B3,1);
 L_4=H*homogene(B4,1);
 
-B_=[ (L_1(1:2)/L_1(3))';  (L_2(1:2)/L_2(3))';  (L_3(1:2)/L_3(3))';  (L_4(1:2)/L_4(3))' ]
+B_=[ (L_1(1:2)/L_1(3))';  (L_2(1:2)/L_2(3))';  (L_3(1:2)/L_3(3))';  (L_4(1:2)/L_4(3))' ];
 
 
 
 MIB2.B= [ min(round(B_)) ; max(floor(B_))];
-B_=MIB2.B
+B_=MIB2.B;
 
 % I2  =extraction(I1,H,max(B_)-min(B_))
 %% Projection de 1 sur 2
 s2 = B_(2,:)-B_(1,:)+1;
-n = s2(2)
-m = s2(1)
+n = s2(2);
+m = s2(1);
 Mask=zeros(n,m);
 I2=zeros(n,m);
 invH=inv(H);
