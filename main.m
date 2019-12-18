@@ -66,7 +66,7 @@ clc;
 % % figure,image(D),colormap(gray(256));
 
 %% Mosaique
-I = double(imread('./images/barbara.bmp'));
+I = double(imread('./images/BIBS.jpeg'));
 [h w] = size(I);
 figure,imshow(uint8(I));
 % L1 = ginput(4);
@@ -79,7 +79,7 @@ theta =pi/3;
 H = [cos(theta) -sin(theta) 0;
     sin(theta) cos(theta) 0;
     0 0 1];
-% H = homo(L2, L1);
+% % H = homo(L2, L1);
 MIB2 = mib_apply_homography(MIB1,H);
 figure,imshow(uint8(MIB2.I));
 % 

@@ -5,7 +5,7 @@ I1 = MIB1.I;
 h =  size(I1,1);
 w = size(I1,2);
 
-B = MIB1.B;
+B = MIB1.B
 % born1=[B(1,1):B(1,1)+h];
 % born2=[B(1,2):B(1,2)+w];
 
@@ -26,7 +26,7 @@ B_=[ (L_1(1:2)/L_1(3))';  (L_2(1:2)/L_2(3))';  (L_3(1:2)/L_3(3))';  (L_4(1:2)/L_
 
 
 
-MIB2.B= [ min(round(B_)) ; max(floor(B_))];
+MIB2.B= [ min(floor(B_)) ; max(floor(B_))];
 B_=MIB2.B;
 
 % I2  =extraction(I1,H,max(B_)-min(B_))
@@ -35,7 +35,7 @@ s2 = B_(2,:)-B_(1,:)+1;
 n = s2(2);
 m = s2(1);
 Mask=zeros(n,m);
-I2=zeros(n,m);
+I2=zeros(n,m,size(I1,3));
 invH=inv(H);
 for i= B_(1,2):B_(2,2)
     for j=B_(1,1):B_(2,1)
@@ -47,10 +47,10 @@ for i= B_(1,2):B_(2,2)
         x = M2(1);
         y = M2(2);
         
-        if (x>=B1(2) && x<=B2(1) && y>=B1(2) && y<=B2(2))
-%             i-B_(1,2)+1
-%             j-B_(1,1)+1
-            I2(i-B_(1,2)+1,j-B_(1,1)+1) = I1(y,x);
+        if (x>=B1(1) && x<=B2(1) && y>=B1(2) && y<B2(2))
+%             x
+%             y
+            I2(i-B_(1,2)+1,j-B_(1,1)+1,:) = I1(y-B1(2)+1,x-B1(1)+1,:);
             Mask(i-B_(1,2)+1,j-B_(1,1)+1) = 1;
         end
         
