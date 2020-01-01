@@ -1,6 +1,6 @@
 function [H] = homo(L1,L2)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%homo Summary of this function goes here
+%   Calcul de la matrice permettant de satisfaire M2=H*M1
 
 %Creation de la matrice B%
 [n m] = size(L2);
