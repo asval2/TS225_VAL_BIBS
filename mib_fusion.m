@@ -56,6 +56,7 @@ end
 
 MIB3.M=Mask3;
 MIB3.I=I3;
+MIB3.B=B3;
 
 end
 
